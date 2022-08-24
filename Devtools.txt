@@ -2,3 +2,6 @@ This is desc for dev tool
 VS code 
 VS 2019
 Bracket
+
+
+final copy
