@@ -12,4 +12,5 @@ jetbrains
 Done My changes
 
 final copy
-
+//to set cookie through browser
+document.cookie="keyofcookie=valueofcookie"
