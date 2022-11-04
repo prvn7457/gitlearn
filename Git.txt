@@ -1,0 +1,16 @@
+//git to merge two branch
+
+1) make a copy of your folder to be on the safe side
+2) git pull
+3) git checkout main
+4) git pull
+5) git checkout Cpe_Credits_round2 
+6) git merge main
+7) git push origin Cpe_Credits_round2 
+
+//Git to remove file
+$ git rm --cached <file>
+
+$ git commit -m "Deleted file from repository only"
+
+$ git push
