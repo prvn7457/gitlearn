@@ -1,0 +1,15 @@
+	var monday = DateTime.Today.AddDays((-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)-7);
+		var sunday = DateTime.Today.AddDays((-(int)DateTime.Today.DayOfWeek));
+    
+    
+    
+select FORMAT (DATEADD(DD,1,'2009-01-01'), 'yyyy-MM-dd') as Date;
+
+    
+    https://www.c-sharpcorner.com/blogs/date-and-time-format-in-c-sharp-programming1
+    
+    
+    
+    //Sql injection
+    
+    https://www.sqlshack.com/understanding-impact-clr-strict-security-configuration-setting-sql-server-2017/
