@@ -29,3 +29,8 @@ https://stackoverflow.com/questions/55922752/jquery-multi-step-form-skip-steps-d
 
 //Convert milisecond hours
 https://www.daftlogic.com/projects-convert-milliseconds-to-hours-minutes-seconds.htm
+
+
+//Decoding and encoding
+
+https://www.base64decode.org/
