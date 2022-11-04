@@ -1,0 +1,15 @@
+//adding seesion time in program.cs
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(365);
+});
+
+//to get current url
+
+var url = new Uri($"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}");
+
+
+string url = Request.Host.ToString()+$"/cpe/Home/Dashboard";
+
+
+string url = Request.Host.ToString();
