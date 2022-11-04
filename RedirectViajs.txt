@@ -1,0 +1,31 @@
+  //Redirect to LaunchPad 
+        public string RedirectViaJs(string to_Url)
+        {
+            string html = "";
+
+            html += @"
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <meta http-equiv=`refresh` content=`1;url='[LOCATION]'` />
+
+                        <script>
+	                        document.addEventListener('DOMContentLoaded', function () {
+                                
+		                        window.location.href = '[LOCATION]';
+                               
+	                        }, false);
+                        </script>
+                    </head>
+  
+                    <body>
+                      
+                    </body>
+                </html>
+                     ";
+
+            html = html.Replace("`", "\"");
+            html = html.Replace("[LOCATION]", to_Url);
+            return Convert.ToString(html);
+
+        }
