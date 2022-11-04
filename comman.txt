@@ -1,0 +1,31 @@
+//select2 jquery 
+https://codewithmukesh.com/blog/select2-jquery-plugin-in-aspnet-core/
+
+
+//getting too many redirect error
+
+
+https://stackoverflow.com/questions/61473098/getting-error-err-too-many-redirects-in-asp-net-core
+
+
+
+https://www.aspsnippets.com/Articles/Show-Hide-DIV-with-TextBox-based-on-DropDownList-Selected-Value-Selection-using-JavaScript-and-jQuery.aspx
+
+
+https://www.syncfusion.com/forums/147022/validation-message-appears-even-after-value-change-using-ejdropdownlist
+
+
+ $("#txtVideoUrl").attr("disabled", true);
+
+ $("input:radio[name='RadioButtonVideo']").attr('disabled', true);
+
+
+//x-forwarded-for C#
+
+https://www.iaspnetcore.com/blog/blogpost/5a068d74e42370369cf0b718
+
+//Jquery multistep form
+https://stackoverflow.com/questions/55922752/jquery-multi-step-form-skip-steps-depending-on-selection
+
+//Convert milisecond hours
+https://www.daftlogic.com/projects-convert-milliseconds-to-hours-minutes-seconds.htm
