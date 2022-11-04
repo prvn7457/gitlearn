@@ -17,3 +17,14 @@ as
 	end 
 
 
+//The Join is:
+
+ cmd = new SqlCommand(@"select c.title , c.author, CONVERT(time(0), DATEADD(MINUTE, a.DurationRes, 0)) 
+                        as DurationRes, a.session_id, '' as PromotionName, c.PresenterNames, b.Contact_ID ,'' as Category, 
+                        ''as MarketSegment from access_info a left join tbl_contacts_dods_main b on a.contact_id = b.contact_id 
+                        left join player_session c on a.session_id = c.session_id left join player_playlistInfo d on 
+                        c.session_code = d.sessionID  where b.Contact_ID in (@ContactID) and durationRes > 0 
+                        and FORMAT (a.access_date, 'yyyyMMdd') between @FromDate AND @ToDate", con);
+                        cmd.Parameters.AddWithValue("@ContactID", Contact_Id);
+                        cmd.Parameters.AddWithValue("@FromDate", FromDate);
+                        cmd.Parameters.AddWithValue("@ToDate", ToDate);
