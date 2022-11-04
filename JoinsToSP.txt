@@ -1,0 +1,19 @@
+CREATE procedure SP_CPECREDIT  
+(  
+@session_id int,
+@Contact_ID int,
+@status varchar(50)
+)  
+as  
+	begin
+		if @status='Select'  
+		begin  
+			select c.title, c.author, CONVERT(time(0), DATEADD(MINUTE, a.DurationRes, 0)) as DurationRes, a.session_id, 
+			'' as PromotionName, '' categoryName, c.PresenterNames, b.Contact_ID from access_info a left join
+			tbl_contacts_dods_main b on a.contact_id = b.contact_id left join player_session c on 
+			a.session_id = c.session_id left join player_playlistInfo d
+			on c.session_code = d.sessionID where b.Contact_ID in @Contact_ID and durationRes > 0  
+		end  
+	end 
+
+
