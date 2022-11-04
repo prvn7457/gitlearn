@@ -1,0 +1,117 @@
+using CpeCredits.Models.ViewModels;
+using Newtonsoft.Json;
+using System.Data;
+using System.Data.SqlClient;
+using System.Net.Mail;
+
+namespace CpeCredits.App_Code
+{
+    public class CommonClass
+    {
+    
+        public void EmailSend(string Email, string body, string CC, string Subject)
+        {
+            try
+            {
+                var plainView = AlternateView.CreateAlternateViewFromString(body, null, "text/plain");
+                var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new System.Net.NetworkCredential("noreply@thedemoforum.com", "TH3forumd3m0");
+                smtp.EnableSsl = true;
+
+                MailAddress mailads = new MailAddress("noreply@thedemoforum.com");
+                MailMessage mailmsg = new MailMessage();
+
+                mailmsg.From = mailads;
+                mailmsg.To.Add(Email);
+                mailmsg.AlternateViews.Add(plainView);
+                mailmsg.AlternateViews.Add(htmlView);                
+                if (CC != null)
+                {
+                    string[] ccid = CC.Split(';');
+
+                    foreach (string bccEmailId in ccid)
+                    {
+                        if (bccEmailId != "")
+                        {
+                            mailmsg.CC.Add(new MailAddress(bccEmailId));
+                        }
+                    }
+                }
+
+                mailmsg.Subject = Subject;
+                mailmsg.Body = body;                
+                mailmsg.IsBodyHtml = true;
+                
+
+                smtp.Send(mailmsg);
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+        }
+
+       
+
+        public string EnryptString(string strEncrypted)
+        {
+            byte[] b = System.Text.ASCIIEncoding.ASCII.GetBytes(strEncrypted);
+            string encrypted = Convert.ToBase64String(b);
+            return encrypted;
+        }
+
+       public string DecryptedString(string strDecrypted)
+        {
+            byte[] b;
+            string decrypted;
+            try
+            {
+                b = Convert.FromBase64String(strDecrypted);
+                decrypted = System.Text.ASCIIEncoding.ASCII.GetString(b);
+            }
+            catch (FormatException ex)
+            {
+                ex.ToString();
+                decrypted = "";
+            }
+            return decrypted;
+        }
+
+        //IPStack API
+        public string getGeoCountry(string ip)
+        {
+            //get ip from httprequest;
+            string country_name = "";
+
+            string accessKey = "9064a332503611fd8b80aa4acc45c41f";
+            string serviceURL = "https://api.ipstack.com/";
+            string finalURL = serviceURL + ip + "?access_key=" + accessKey;
+
+
+            // best practice to create one HttpClient per Application and inject it
+            HttpClient client = new HttpClient();
+
+            using (HttpResponseMessage response = client.GetAsync(finalURL).Result)
+            {
+                using (HttpContent content = response.Content)
+                {
+                    var json = content.ReadAsStringAsync().Result;
+                    var JsonData = JsonConvert.DeserializeObject<ModelForGetCountryResponse>(json);
+                    country_name = JsonData.country_name.ToString();
+                }
+
+            }
+
+
+            return country_name;
+
+
+        }
+
+    }
+}
