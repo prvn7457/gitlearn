@@ -1,0 +1,10 @@
+ public string UploadProfile(IFormFile file)
+        {
+          var www= hostingEnvironment.ContentRootPath;
+            var fullpath = Path.Combine(www,"images",file.FileName);
+
+            FileStream stream = new FileStream(fullpath, FileMode.Create);         
+            file.CopyTo(stream);
+            return $"images/{file.FileName}";
+        }
+      
